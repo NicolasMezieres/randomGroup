@@ -1,1 +1,26 @@
-<p>accueil works!</p>
+<app-header-connected></app-header-connected>
+<main class="mt-10 px-5 flex justify-center items-center flex-col gap-6">
+  <button
+    mat-button
+    class="!bg-grey !shadow-[0_1px_2px_#21212150] !rounded-[5px]"
+  >
+    Crée une liste
+  </button>
+  <button
+    mat-button
+    class="!bg-grey !shadow-[0_1px_2px_#21212150] !rounded-[5px]"
+  >
+    Afficher les listes
+  </button>
+  <article class="bg-grey w-full p-5">
+    @for (list of lists; track $index) {
+    <ul>
+      <li>Nom : {{ list.name }}</li>
+      <li>Nbr de personne : {{ list.personNbr }}</li>
+      <li>Nbr de tirage : {{ list.tryNbr }}</li>
+    </ul>
+    @if ($index < lists.length -1) {
+    <hr class="my-2.5" />
+    } }
+  </article>
+</main>
