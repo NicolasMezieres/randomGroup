@@ -23,10 +23,10 @@ export class RegisterComponent {
       this.newUser.email.trim() &&
       this.newUser.password.trim()
     ) {
-      console.log(this.newUser);
       localStorage.setItem('newUser', JSON.stringify(this.newUser));
+      location.href = '../login';
     } else {
-      alert('Veuillez remplir tous les champs');
+      return alert('Veuillez remplir tous les champs');
     }
   }
 }

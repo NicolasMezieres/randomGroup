@@ -1,52 +1,33 @@
 import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { LoginProps } from '../../utils/types';
 
 @Component({
   selector: 'app-login',
-  imports: [],
+  imports: [FormsModule],
   styleUrl: './login.component.css',
-  template: `
-    <main class="h-[90vh] flex flex-col w-full justify-center items-center">
-      <h1 class="text-xl">Connexion</h1>
-      <form
-        action="submit"
-        class="h-fit gap-8 bg-[#EFE9E7] w-[80%] sm:w-[400px] rounded-xl p-8 flex flex-col justify-evenly items-center mt-10  shadow-sm shadow-black border-1 border-slate-200"
-      >
-        <div class="w-full h-fit p-1">
-          <label for="email" class="underline">Email :</label>
-          <input
-            required
-            type="email"
-            name="email"
-            id=""
-            class="bg-white rounded-md p-2 text-center w-full  shadow-sm shadow-black placeholder-gray-300"
-            placeholder="Email..."
-          />
-        </div>
-        <div class="w-full h-fit p-1">
-          <label for="mot de passe" class="underline">Mot de passe :</label>
-          <input
-            required
-            type="text"
-            name="mot de passe"
-            id=""
-            class="bg-white rounded-md p-2 text-center w-full  shadow-sm shadow-black placeholder-gray-300"
-            placeholder="Mot de passe..."
-          />
-        </div>
-        <button
-          type="submit"
-          class="bg-white w-full  shadow-sm shadow-black mt-10 rounded-md p-2 sm:hidden"
-        >
-          Connexion
-        </button>
-      </form>
-      <button
-        type="submit"
-        class="bg-white w-full sm:w-[300px] shadow-sm shadow-black mt-10 rounded-md p-2 hidden sm:flex items-center justify-center"
-      >
-        Connexion
-      </button>
-    </main>
-  `,
+  templateUrl: './login.component.html',
 })
-export class LoginComponent {}
+export class LoginComponent {
+  user: LoginProps = {
+    email: '',
+    password: '',
+  };
+
+  JWT = JSON.parse(localStorage.getItem('newUser') || '');
+  loginUser(): void {
+    if (this.user.email.trim() && this.user.password.trim()) {
+      if (
+        this.user.email === this.JWT.email &&
+        this.user.password === this.JWT.password
+      ) {
+        alert('Connected !');
+        console.log(this.user);
+      } else {
+        alert('Invalid credentials');
+      }
+    } else {
+      alert('Veuillez remplir tous les champs');
+    }
+  }
+}
