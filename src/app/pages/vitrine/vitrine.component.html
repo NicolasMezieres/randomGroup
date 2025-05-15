@@ -1,53 +1,67 @@
-<app-header-dc></app-header-dc>
-<h1 class="text-center p-2 m-2 Jersey10 text-[32px]">Les Mongoles Fiers</h1>
-<section class="p-4 m-2 text-center gap-5 flex flex-col Agdasima">
-  <h2>Former des groupes, sans avoir à s'envoler</h2>
-  <p>
-    Bienvenue sur Mongoles Fiers, l’outil ultime pour créer des groupes
-    équilibrés, dynamiques et un peu chaotiques… mais toujours efficaces. Pensé
-    pour les promos de formation, ce site te permet de composer des équipes
-    variées en quelques clics, sans avoir à tout faire à la main ou à tirer des
-    papiers dans un chapeau.
-  </p>
-  <p>
-    Pourquoi Mongoles Fiers ? Parce qu’on est tous un peu paumés parfois, qu’on
-    apprend à notre rythme, avec nos forces et nos galères… mais qu’on avance
-    ensemble. Ce site, c’est pour ceux qui veulent gagner du temps sans
-    sacrifier l’humain.
-  </p>
-</section>
-<section class="p-4 m-2 flex flex-col Agdasima">
-  <h2 class="">Fonctionnalités clés :</h2>
-  <h3>Gestions des participants</h3>
-  <ol class="ml-6 list-decimal">
-    <li>
-      Crée ta liste de personnes avec toutes les infos utiles : nom, genre, âge,
-      niveau, profil, aisance en français, ancien·ne DWWM ou pas.
-    </li>
-    <li>
-      Chaque utilisateur peut avoir plusieurs listes, à condition qu'elles aient
-      un nom unique.
-    </li>
-  </ol>
-  <h3>Création de groupes intelligente</h3>
-  <ol class="list-decimal ml-6">
-    <li>Nombre de groupes à définir, avec un petit nom pour chacun.</li>
-    <li>
-      Choisis tes règles : mélanger les âges, les niveaux techniques, séparer ou
-      regrouper les anciens.
-    </li>
-    <li>Le tirage garantit des groupes différents à chaque fois.</li>
-    <li>Tu peux relancer le tirage si le résultat ne te plaît pas.</li>
-    <li>Tu peux aussi déplacer les gens à la main (drag-and-drop style).</li>
-    <li>
-      Quand c’est bon, tu valides : le groupe est verrouillé, plus de retouches
-      !
-    </li>
-  </ol>
-  <h3>Visualisation et historique</h3>
-  <ol class="ml-6 list-decimal">
-    <li>Pour chaque liste : nombre de personnes, nombre de tirages.</li>
-    <li>Possibilité de retrouver, modifier ou supprimer les participants.</li>
-  </ol>
-</section>
-<app-footer></app-footer>
+<div class="flex flex-col min-h-screen">
+  <app-header-dc></app-header-dc>
+  <main class="flex-auto">
+    <h1 class="text-center p-2 m-2 Jersey10 text-[32px] md:text-[48px]">
+      Les Mongoles Fiers
+    </h1>
+    <section
+      class="p-4 m-2 text-center gap-5 flex flex-col Agdasima md:p-20 md:text-[20px] md:m-0 lg:text-[24px]"
+    >
+      <h2>Former des groupes, sans avoir à s'envoler</h2>
+      <p>
+        Bienvenue sur Mongoles Fiers, l’outil ultime pour créer des groupes
+        équilibrés, dynamiques et un peu chaotiques… mais toujours efficaces.
+        Pensé pour les promos de formation, ce site te permet de composer des
+        équipes variées en quelques clics, sans avoir à tout faire à la main ou
+        à tirer des papiers dans un chapeau.
+      </p>
+      <p>
+        Pourquoi Mongoles Fiers ? Parce qu’on est tous un peu paumés parfois,
+        qu’on apprend à notre rythme, avec nos forces et nos galères… mais qu’on
+        avance ensemble. Ce site, c’est pour ceux qui veulent gagner du temps
+        sans sacrifier l’humain.
+      </p>
+    </section>
+    <section
+      class="p-4 m-2 flex flex-col Agdasima md:p-20 md:text-[20px] md:m-0 lg:text-[24px]"
+    >
+      <h2 class="">Fonctionnalités clés :</h2>
+      <h3>Gestions des participants</h3>
+      <ol class="ml-6 list-decimal">
+        <li>
+          Crée ta liste de personnes avec toutes les infos utiles : nom, genre,
+          âge, niveau, profil, aisance en français, ancien·ne DWWM ou pas.
+        </li>
+        <li>
+          Chaque utilisateur peut avoir plusieurs listes, à condition qu'elles
+          aient un nom unique.
+        </li>
+      </ol>
+      <h3>Création de groupes intelligente</h3>
+      <ol class="list-decimal ml-6">
+        <li>Nombre de groupes à définir, avec un petit nom pour chacun.</li>
+        <li>
+          Choisis tes règles : mélanger les âges, les niveaux techniques,
+          séparer ou regrouper les anciens.
+        </li>
+        <li>Le tirage garantit des groupes différents à chaque fois.</li>
+        <li>Tu peux relancer le tirage si le résultat ne te plaît pas.</li>
+        <li>
+          Tu peux aussi déplacer les gens à la main (drag-and-drop style).
+        </li>
+        <li>
+          Quand c’est bon, tu valides : le groupe est verrouillé, plus de
+          retouches !
+        </li>
+      </ol>
+      <h3>Visualisation et historique</h3>
+      <ol class="ml-6 list-decimal">
+        <li>Pour chaque liste : nombre de personnes, nombre de tirages.</li>
+        <li>
+          Possibilité de retrouver, modifier ou supprimer les participants.
+        </li>
+      </ol>
+    </section>
+  </main>
+  <app-footer></app-footer>
+</div>
