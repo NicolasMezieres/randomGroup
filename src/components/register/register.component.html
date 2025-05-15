@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <main class="h-[90vh] flex flex-col w-full justify-center items-center">
+      <h1 class="text-xl">Inscription</h1>
+      <form
+        action="submit"
+        class="h-fit bg-[#EFE9E7] w-[80%] rounded-xl p-8 flex flex-col justify-evenly items-center mt-10 shadow-md border-1 border-slate-200"
+      >
+        <div class="w-full h-fit p-1">
+          <label for="nom" class="underline">Nom :</label>
+          <input
+            required
+            type="text"
+            name="nom"
+            id=""
+            class="bg-white rounded-md p-2 text-center w-full shadow-md"
+            placeholder="Nom..."
+          />
+        </div>
+        <div class="w-full h-fit p-1">
+          <label for="prénom" class="underline">Prénom :</label>
+          <input
+            required
+            type="text"
+            name="prénom"
+            id=""
+            class="bg-white rounded-md p-2 text-center w-full shadow-md"
+            placeholder="Prénom..."
+          />
+        </div>
+        <div class="w-full h-fit p-1">
+          <label for="email" class="underline">Email :</label>
+          <input
+            required
+            type="email"
+            name="email"
+            id=""
+            class="bg-white rounded-md p-2 text-center w-full shadow-md"
+            placeholder="Email..."
+          />
+        </div>
+        <div class="w-full h-fit p-1">
+          <label for="mot de passe" class="underline">Mot de passe :</label>
+          <input
+            required
+            type="text"
+            name="mot de passe"
+            id=""
+            class="bg-white rounded-md p-2 text-center w-full shadow-md"
+            placeholder="Mot de passe..."
+          />
+        </div>
+        <button
+          type="submit"
+          class="bg-white w-full shadow-md mt-10 rounded-md p-2"
+        >
+          Inscription
+        </button>
+      </form>
+    </main>
+  </body>
+</html>
