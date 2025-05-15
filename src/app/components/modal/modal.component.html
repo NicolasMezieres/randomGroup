@@ -1,0 +1,46 @@
+<section class="h-screen w-full">
+  <div
+    class="h-full absolute top-0 bg-black opacity-50 z-0 w-full flex flex-col items-center justify-center"
+  >
+    <form
+      action="submit"
+      class="bg-[#EFE9E7] w-[90%] h-fit gap-8 p-10 flex flex-col justify-evenly items-center z-10 rounded-2xl"
+    >
+      <div class="w-full h-fit p-1">
+        <label for="nom" class="underline">Nombre de groupe :</label>
+        <input
+          type="text"
+          name="nom"
+          id="lastName"
+          class="bg-white rounded-md p-2 text-center w-full shadow-sm shadow-black placeholder-gray-300 mt-2"
+          placeholder="Choisir le nombre..."
+        />
+      </div>
+      <div class="w-full h-fit p-1">
+        <label for="nom" class="underline">Nom du groupe :</label>
+        <input
+          type="text"
+          name="nom"
+          id="lastName"
+          class="bg-white rounded-md p-2 text-center w-full shadow-sm shadow-black placeholder-gray-300 mt-2"
+          placeholder="Choisir le nombre..."
+        />
+      </div>
+      <div class="w-full h-fit p-1 flex justify-center items-center gap-4">
+        <input type="checkbox" name="dwwm" id="" class="accent-black" />
+        <label for="dwwm">Ancien DWWM</label>
+      </div>
+      <div class="w-full h-fit p-1 flex justify-center items-center gap-4">
+        <input type="checkbox" name="age" id="" class="accent-black" />
+        <label for="age">Age</label>
+      </div>
+      <div class="w-full h-fit p-1 flex justify-center items-center gap-4">
+        <input type="checkbox" name="tech" id="" class="accent-black" />
+        <label for="tech">Niv Tech</label>
+      </div>
+      <button type="submit" class="bg-white p-2 rounded-md shadow-xl mt-10">
+        Générer les groupes
+      </button>
+    </form>
+  </div>
+</section>
