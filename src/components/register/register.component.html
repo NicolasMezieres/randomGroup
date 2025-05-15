@@ -10,7 +10,7 @@
       <h1 class="text-xl">Inscription</h1>
       <form
         action="submit"
-        class="h-fit bg-[#EFE9E7] w-[80%] rounded-xl p-8 flex flex-col justify-evenly items-center mt-10 shadow-md border-1 border-slate-200"
+        class="h-fit bg-[#EFE9E7] w-[80%] sm:w-[400px] rounded-xl p-8 flex flex-col justify-evenly items-center mt-10  shadow-sm shadow-black border-1 border-slate-200"
       >
         <div class="w-full h-fit p-1">
           <label for="nom" class="underline">Nom :</label>
@@ -19,7 +19,7 @@
             type="text"
             name="nom"
             id=""
-            class="bg-white rounded-md p-2 text-center w-full shadow-md"
+            class="bg-white rounded-md p-2 text-center w-full  shadow-sm shadow-black placeholder-gray-300"
             placeholder="Nom..."
           />
         </div>
@@ -30,7 +30,7 @@
             type="text"
             name="prénom"
             id=""
-            class="bg-white rounded-md p-2 text-center w-full shadow-md"
+            class="bg-white rounded-md p-2 text-center w-full  shadow-sm shadow-black placeholder-gray-300"
             placeholder="Prénom..."
           />
         </div>
@@ -41,7 +41,7 @@
             type="email"
             name="email"
             id=""
-            class="bg-white rounded-md p-2 text-center w-full shadow-md"
+            class="bg-white rounded-md p-2 text-center w-full  shadow-sm shadow-black placeholder-gray-300"
             placeholder="Email..."
           />
         </div>
@@ -52,17 +52,23 @@
             type="text"
             name="mot de passe"
             id=""
-            class="bg-white rounded-md p-2 text-center w-full shadow-md"
+            class="bg-white rounded-md p-2 text-center w-full  shadow-sm shadow-black placeholder-gray-300"
             placeholder="Mot de passe..."
           />
         </div>
         <button
           type="submit"
-          class="bg-white w-full shadow-md mt-10 rounded-md p-2"
+          class="bg-white w-full  shadow-sm shadow-black mt-10 rounded-md p-2 sm:hidden"
         >
           Inscription
         </button>
       </form>
+        <button
+          type="submit"
+          class="bg-white w-full sm:w-[300px] shadow-sm shadow-black mt-10 rounded-md p-2 hidden sm:flex items-center justify-center"
+        >
+          Inscription
+        </button>
     </main>
   </body>
 </html>
