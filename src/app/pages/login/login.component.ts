@@ -14,17 +14,18 @@ export class LoginComponent {
     password: '',
   };
 
-  JWT = JSON.parse(localStorage.getItem('newUser') || '');
+  users = JSON.parse(localStorage.getItem('users') || '');
+
   loginUser(): void {
     if (this.user.email.trim() && this.user.password.trim()) {
       if (
-        this.user.email === this.JWT.email &&
-        this.user.password === this.JWT.password
+        this.user.email === this.users.email &&
+        this.user.password === this.users.password
       ) {
-        alert('Connected !');
+        alert('Connecté !');
         console.log(this.user);
       } else {
-        alert('Invalid credentials');
+        alert('Identifiants invalides');
       }
     } else {
       alert('Veuillez remplir tous les champs');
