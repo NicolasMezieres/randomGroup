@@ -1,12 +1,22 @@
+@import url("https://fonts.googleapis.com/css2?family=Agdasima:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Jersey+10&display=swap");
 @import "tailwindcss";
 @theme {
   --color-grey: #efe9e7;
 }
-html,
+
 body {
-  height: 100%;
+  background-color: #fff9fb;
 }
-body {
-  margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
+
+.Agdasima {
+  font-family: "Agdasima", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.Jersey10 {
+  font-family: "Jersey 10", sans-serif;
+  font-weight: 600;
+  font-style: normal;
 }
