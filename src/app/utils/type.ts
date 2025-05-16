@@ -3,10 +3,3 @@ export type listType = {
   personNbr: number;
   tryNbr: number;
 };
-
-export type ProfilsProps = {
-  firstName: string,
-  lastName: string,
-  email: string,
-  password: string
-}
