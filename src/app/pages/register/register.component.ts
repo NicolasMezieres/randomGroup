@@ -18,6 +18,7 @@ export class RegisterComponent {
     password: '',
   };
   users: RegisterProps[] = [];
+  showError: boolean = false
 
   createUser(): void {
     if (

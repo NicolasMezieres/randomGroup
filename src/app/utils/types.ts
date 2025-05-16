@@ -9,3 +9,11 @@ export type LoginProps = {
   email: string;
   password: string;
 };
+
+export type ModalProps = {
+  nbGroups: number,
+  name: string,
+  isDWWM: boolean,
+  age: boolean,
+  skill: boolean
+}
