@@ -1,0 +1,42 @@
+ <main class="h-[90vh] flex flex-col w-full justify-center items-center">
+      <h1 class="text-xl">Connexion</h1>
+      <form
+        action="submit"
+        class="h-fit gap-8 bg-[#EFE9E7] w-[80%] sm:w-[400px] rounded-xl p-8 flex flex-col justify-evenly items-center mt-10  shadow-sm shadow-black border-1 border-slate-200"
+      >
+        <div class="w-full h-fit p-1">
+          <label for="email" class="underline">Email :</label>
+          <input
+            [(ngModel)]="user.email"
+            type="email"
+            name="email"
+            id="email"
+            class="bg-white rounded-md p-2 text-center w-full  shadow-sm shadow-black placeholder-gray-300"
+            placeholder="Email..."
+          />
+        </div>
+        <div class="w-full h-fit p-1">
+          <label for="mot de passe" class="underline">Mot de passe :</label>
+          <input
+            [(ngModel)]="user.password"
+            type="text"
+            name="mot de passe"
+            id="password"
+            class="bg-white rounded-md p-2 text-center w-full  shadow-sm shadow-black placeholder-gray-300"
+            placeholder="Mot de passe..."
+          />
+        </div>
+        <button
+          type="submit"
+          class="bg-white w-full  shadow-sm shadow-black mt-10 rounded-md p-2 sm:hidden"
+        (click)="loginUser()">
+          Connexion
+        </button>
+      </form>
+      <button
+        type="submit"
+        class="bg-white w-full sm:w-[300px] shadow-sm shadow-black mt-10 rounded-md p-2 hidden sm:flex items-center justify-center"
+      >
+        Connexion
+      </button>
+    </main>
