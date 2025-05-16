@@ -2,14 +2,11 @@ import { Routes } from '@angular/router';
 import { AppComponent } from '../app/app.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { LoginComponent } from './pages/login/login.component';
+import { AccueilComponent } from './pages/accueil/accueil.component';
+import { ListsComponent } from './pages/lists/lists.component';
 
-//Ajout des paths pour naviguer à register
 export const routes: Routes = [
-  {
-    path: '',
-    title: 'Page Vitrine',
-    component: AppComponent,
-  },
+  { path: 'accueil', component: AccueilComponent },
   {
     path: 'register',
     title: 'Page Inscription',
@@ -20,4 +17,5 @@ export const routes: Routes = [
     title: 'Page Connexion',
     component: LoginComponent,
   },
+  { path: 'lists', title: 'Page Listes', component: ListsComponent },
 ];

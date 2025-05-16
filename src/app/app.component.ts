@@ -6,9 +6,7 @@ import { RouterOutlet } from '@angular/router';
   imports: [RouterOutlet],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
-  template: `
-  <a routerLink="./register">Inscription</a>
-  `
+
 })
 export class AppComponent {
   title = 'randomGroup';
