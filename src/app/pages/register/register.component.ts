@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RegisterProps } from '../../utils/types';
+import { ErrorMsgComponent } from '../../components/error-msg/error-msg.component';
+import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-register',
-  imports: [FormsModule],
+  imports: [FormsModule, ErrorMsgComponent, NgIf],
   styleUrl: './register.component.css',
   templateUrl: './register.component.html',
 })
@@ -15,6 +17,8 @@ export class RegisterComponent {
     email: '',
     password: '',
   };
+  users: RegisterProps[] = [];
+  showError: boolean = false
 
   createUser(): void {
     if (
@@ -23,7 +27,8 @@ export class RegisterComponent {
       this.newUser.email.trim() &&
       this.newUser.password.trim()
     ) {
-      localStorage.setItem('newUser', JSON.stringify(this.newUser));
+      this.users.push(this.newUser);
+      localStorage.setItem('users', JSON.stringify(this.newUser));
       location.href = '../login';
     } else {
       return alert('Veuillez remplir tous les champs');

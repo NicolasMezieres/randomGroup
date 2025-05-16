@@ -14,6 +14,7 @@
         class="bg-white rounded-md p-2 text-center w-full shadow-sm shadow-black placeholder-gray-300"
         placeholder="Nom..."
       />
+      <app-error-msg *ngIf="showError" field="Nom" />
     </div>
     <div class="w-full h-fit p-1">
       <label for="prénom" class="underline">Prénom :</label>
@@ -25,6 +26,7 @@
         class="bg-white rounded-md p-2 text-center w-full shadow-sm shadow-black placeholder-gray-300"
         placeholder="Prénom..."
       />
+      <app-error-msg *ngIf="showError" field="Prénom" />
     </div>
     <div class="w-full h-fit p-1">
       <label for="email" class="underline">Email :</label>
@@ -36,6 +38,7 @@
         class="bg-white rounded-md p-2 text-center w-full shadow-sm shadow-black placeholder-gray-300"
         placeholder="Email..."
       />
+      <app-error-msg *ngIf="showError" field="Email" />
     </div>
     <div class="w-full h-fit p-1">
       <label for="mot de passe" class="underline">Mot de passe :</label>
@@ -47,6 +50,7 @@
         class="bg-white rounded-md p-2 text-center w-full shadow-sm shadow-black placeholder-gray-300"
         placeholder="Mot de passe..."
       />
+      <app-error-msg *ngIf="showError" field="Mot de passe" />
     </div>
     <button
       type="submit"
@@ -60,6 +64,7 @@
   <button
     type="submit"
     class="bg-white w-full sm:w-[300px] shadow-sm shadow-black mt-10 rounded-md p-2 hidden sm:flex items-center justify-center"
+    (click)="createUser()"
   >
     Inscription
   </button>
