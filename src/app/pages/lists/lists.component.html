@@ -2,24 +2,33 @@
 <main class="w-full h-[85vh] flex flex-col justify-center items-center gap-4">
   <h1 class="Agdasima text-2xl">Liste</h1>
   <section
-    class="min-h-2/3 bg-[#efe9e7] w-[90%] rounded-xl shadow shadow-black"
+    class="h-2/3 bg-[#efe9e7] w-[90%] rounded-xl shadow shadow-black overflow-y-auto"
   >
-    <ul class="grid grid-cols-5 w-full gap-4 p-4 text-xs">
-      <li>Nom:</li>
-      <li>Genre:</li>
-      <li>Niv FR:</li>
-      <li>Ancien DWWM:</li>
-      <li>Niv Tech:</li>
+    <ul class="grid grid-cols-7 w-full gap-4 p-4 text-xs overflow-auto">
+      <li class="col-span-1">Nom:</li>
+      <li class="col-span-1">Genre:</li>
+      <li class="col-span-1">Niv FR:</li>
+      <li class="col-span-1">Ancien DWWM:</li>
+      <li class="col-span-1">Niv Tech:</li>
+      <li class="col-span-1">Age:</li>
+
     </ul>
-    <ul class="grid grid-cols-5 w-full text-center text-xs">
-      @for (student of students; track $index){
-      <li class="col-span-1">{{ student.name }}</li>
-      <li class="col-span-1">{{ student.gender }}</li>
-      <li class="col-span-1">{{ student.frLevel }}</li>
-      <li class="col-span-1">{{ student.isDWWM }}</li>
-      <li class="col-span-1">{{ student.techLevel }}</li>
-      }
-    </ul>
+    @for (student of students; track $index){
+    <div class="overflow-y-auto flex-1 my-4">
+      <ul class="grid grid-cols-7 w-full text-center text-xs">
+        <li class="col-span-1">{{ student.name }}</li>
+        <li class="col-span-1">{{ student.gender }}</li>
+        <li class="col-span-1">{{ student.frLevel }}</li>
+        <li class="col-span-1">{{ student.isDWWM }}</li>
+        <li class="col-span-1">{{ student.techLevel }}</li>
+        <li class="col-span-1">{{ student.age }}</li>
+        <div>
+          <mat-icon aria-label="edit icon" fontIcon="edit"></mat-icon>
+          <mat-icon aria-label="delete icon" fontIcon="delete" (click)="deleteStudent($index)"></mat-icon>
+        </div>
+      </ul>
+    </div>
+    }
   </section>
   <button class="bg-[#efe9e7] rounded-xl shadow-black shadow-md p-3 w-[200px]">
     Créer un groupe

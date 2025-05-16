@@ -9,5 +9,6 @@ export type ListProps = {
   gender: string,
   frLevel: number,
   isDWWM: boolean,
-  techLevel: number
+  techLevel: number,
+  age: number
 }
