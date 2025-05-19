@@ -1,26 +1,240 @@
-<app-header-connected></app-header-connected>
-<main class="mt-10 px-5 flex justify-center items-center flex-col gap-6">
-  <button
-    mat-button
-    class="!bg-grey !shadow-[0_1px_2px_#21212150] !rounded-[5px]"
-  >
-    Crée une liste
-  </button>
-  <button
-    mat-button
-    class="!bg-grey !shadow-[0_1px_2px_#21212150] !rounded-[5px]"
-  >
-    Afficher les listes
-  </button>
-  <article class="bg-grey w-full p-5">
-    @for (list of lists; track $index) {
-    <ul>
-      <li>Nom : {{ list.name }}</li>
-      <li>Nbr de personne : {{ list.personNbr }}</li>
-      <li>Nbr de tirage : {{ list.tryNbr }}</li>
-    </ul>
-    @if ($index < lists.length -1) {
-    <hr class="my-2.5" />
-    } }
-  </article>
-</main>
+<div class="flex flex-col min-h-screen">
+  <app-header-connected></app-header-connected>
+  <main class="mt-10 px-5 md:px-20 flex-auto flex items-center flex-col gap-6">
+    <button
+      mat-button
+      class="!bg-grey !inset-shadow-[0_1px_2px_#21212150] !rounded-[5px] !text-black"
+      (click)="changeShowLists(false)"
+    >
+      Crée une liste
+    </button>
+    <button
+      mat-button
+      class="!bg-grey !inset-shadow-[0_1px_2px_#21212150] !rounded-[5px] !text-black"
+      (click)="changeShowLists(true)"
+    >
+      Afficher les listes
+    </button>
+    @if(isShowLists){
+    <article class="bg-grey w-full p-5">
+      @for (list of lists; track $index) {
+      <ul>
+        <li>Nom : {{ list.name }}</li>
+        <li>Nbr de personne : {{ list.personNbr }}</li>
+        <li>Nbr de tirage : {{ list.tryNbr }}</li>
+      </ul>
+      @if ($index < lists.length -1) {
+      <hr class="my-2.5" />
+      } }
+    </article>
+    }@else if(!isCreateList){
+    <form
+      class="flex flex-col gap-2 w-full md:w-1/2 lg:w-1/4 px-10 py-5 bg-grey"
+    >
+      <label aria-label="name list" aria-required="true" for="nameList"
+        ><p class="underline inline">Nom de la liste</p>
+        <span class="text-red-600"> *</span></label
+      >
+      <input
+        (blur)="updateNameList($event)"
+        mat-button
+        id="nameList"
+        placeholder="Nom de la liste..."
+        type="text"
+        class="!bg-snow py-2 !inset-shadow-[0_1px_2px_#21212180] !rounded-[5px] text-center w-full placeholder:text-[#21212180]"
+      />
+
+      <button
+        [disabled]="isCreateList"
+        (click)="handleCreateList($event)"
+        class="!bg-snow py-2 w-1/2 m-auto !inset-shadow-[0_1px_2px_#21212150] !rounded-[5px] !text-black"
+      >
+        Créer la liste
+      </button>
+    </form>
+    } @if(isCreateList){
+    <article>
+      <h2>Liste d'étudiant</h2>
+      @for (student of listStudent; track $index) {
+      <p>{{ student }}</p>
+      }
+    </article>
+    <div class="bg-grey w-full md:w-1/2 lg:w-1/4 px-10 py-5">
+      <div>
+        <label class="underline">Ajouter un étudiant :</label>
+        <div class="flex">
+          <input
+            list="studentList"
+            (blur)="updateChoiceStudent($event)"
+            mat-button
+            placeholder="Nom de l'apprenant"
+            type="text"
+            class="!bg-snow py-2 !inset-shadow-[0_1px_2px_#21212180] !rounded-[5px] text-center w-full placeholder:text-[#21212180]"
+          />
+          <datalist id="studentList">
+            @for (student of listStudentProposition; track $index) {
+            <option value="{{ student }}">{{ student }}</option>
+            }
+          </datalist>
+          <button (click)="updateListStudent($event)" class="text-xl">
+            <mat-icon aria-label="home icon" fontIcon="add"></mat-icon>
+          </button>
+        </div>
+      </div>
+      <form [formGroup]="studentForm" class="flex flex-col gap-2.5">
+        <label
+          aria-required="true"
+          aria-label="name student"
+          class="underline"
+          for="nameStudent"
+          >Nom
+        </label>
+        <input
+          (blur)="updateNameStudent($event)"
+          mat-button
+          formControlName="name"
+          id="nameStudent"
+          placeholder="Nom..."
+          type="text"
+          class="!bg-snow py-2 !shadow-[0_1px_2px_#21212180] !rounded-[5px] text-center w-full placeholder:text-[#21212180]"
+        />
+        @if(studentForm.controls["name"].touched || isSubmit ){
+        @if(studentForm.controls["name"].errors?.["required"] ) {<span
+          class="text-red-600"
+          >Ce champ est requis</span
+        >
+        }@else if (studentForm.controls["name"].errors?.["minlength"]) {
+        <span class="text-red-600">Minimum 4 caractères</span>
+        }@else if (studentForm.controls["name"].errors?.["maxlength"]) {
+        <span class="text-red-600">Maximum 49 caractères</span>
+        }}
+        <label aria-label="gender student" for="gender" class="underline"
+          >Genre :</label
+        >
+        <select
+          (change)="updateGenderStudent($event)"
+          mat-button
+          formControlName="gender"
+          id="gender"
+          class="!bg-snow py-2 !shadow-[0_1px_2px_#21212180] !rounded-[5px] text-center w-full"
+        >
+          <option value="{{ null }}">Selectionner</option>
+          <option value="man">Homme</option>
+          <option value="woman">Femme</option>
+          <option value="other">ne se prononce pas</option>
+        </select>
+        @if((studentForm.controls["gender"].touched || isSubmit) &&
+        studentForm.controls["gender"].errors?.["required"]){<span
+          class="text-red-600"
+          >Ce champ est requis</span
+        >
+        }
+        <label aria-label="age student" for="age" class="underline"
+          >Age :</label
+        >
+        <input
+          (blur)="updateAgeStudent($event)"
+          mat-button
+          type="number"
+          id="age"
+          formControlName="age"
+          min="1"
+          max="99"
+          class="!bg-snow py-2 !shadow-[0_1px_2px_#21212180] !rounded-[5px] text-center w-full placeholder:text-[#21212180]"
+        />
+        @if(studentForm.controls["age"].touched || isSubmit){
+        @if(studentForm.controls["age"].errors?.["required"] ) {
+        <span class="text-red-600">Ce champ est requis</span>
+        }@else if (studentForm.controls["age"].errors?.["min"]) {
+        <span class="text-red-600">Minimum 1 ans</span>
+        }@else if (studentForm.controls["age"].errors?.["max"]) {
+        <span class="text-red-600">Maximum 99 ans</span>
+        }}
+        <label aria-label="level french" for="levelFrench" class="underline"
+          >Niv FR :</label
+        >
+        <input
+          (blur)="updateLevelFrenchStudent($event)"
+          mat-button
+          formControlName="levelFrench"
+          id="levelFrench"
+          placeholder="Niv FR..."
+          type="number"
+          class="!bg-snow py-2 !shadow-[0_1px_2px_#21212180] !rounded-[5px] text-center w-full placeholder:text-[#21212180]"
+        />
+        @if(studentForm.controls["levelFrench"].touched ||isSubmit){
+        @if(studentForm.controls["levelFrench"].errors?.["required"] ) {<span
+          class="text-red-600"
+          >Ce champ est requis</span
+        >
+        }@else if (studentForm.controls["levelFrench"].errors?.["min"]) {
+        <span class="text-red-600">Minimum 1 </span>
+        }@else if (studentForm.controls["levelFrench"].errors?.["max"]) {
+        <span class="text-red-600">Maximum 4</span>
+        }}
+        <label
+          aria-label="profile student"
+          for="profileStudent"
+          class="underline"
+          >Profil :</label
+        >
+        <select
+          (blur)="updateProfileStudent($event)"
+          mat-button
+          formControlName="profile"
+          id="profileStudent"
+          class="!bg-snow py-2 !shadow-[0_1px_2px_#21212180] !rounded-[5px] text-center w-full"
+        >
+          <option value="{{ null }}">Selectionner</option>
+          <option value="timid">Timide</option>
+          <option value="reserve">Réservé</option>
+          <option value="atEase">à l'aise</option>
+        </select>
+        @if((studentForm.controls["profile"].touched || isSubmit) &&
+        studentForm.controls["profile"].errors?.["required"]){<span
+          class="text-red-600"
+          >Ce champ est requis</span
+        >
+        }
+        <label
+          aria-label="level tech student"
+          for="levelTechStudent"
+          class="underline"
+          >Niv Tech :</label
+        >
+        <input
+          (blur)="updateLevelTechStudent($event)"
+          mat-button
+          id="levelTechStudent"
+          placeholder="Niv Tech..."
+          formControlName="levelTech"
+          type="number"
+          class="!bg-snow py-2 !shadow-[0_1px_2px_#21212180] !rounded-[5px] text-center w-full placeholder:text-[#21212180]"
+        />
+        @if(studentForm.controls["levelTech"].touched || isSubmit){
+        @if(studentForm.controls["levelTech"].errors?.["required"] ) {
+        <span class="text-red-600">Ce champ est requis</span>
+        }@else if (studentForm.controls["levelTech"].errors?.["min"]) {
+        <span class="text-red-600">Minimum 1 </span>
+        }@else if (studentForm.controls["levelTech"].errors?.["max"]) {
+        <span class="text-red-600">Maximum 4</span>
+        }}
+        <div class="flex justify-center items-center gap-10">
+          <label aria-label="was DWWM student" for="wasDWWM" class="underline"
+            >Ancien DWWM :</label
+          >
+          <input id="" type="checkbox" (click)="updateHasDWWMStudent($event)" />
+        </div>
+        <button
+          mat-button
+          class="!bg-snow !inset-shadow-[0_1px_2px_#21212150] !rounded-[5px] !text-black"
+          (click)="addStudentList($event)"
+        >
+          Ajouter un apprenant
+        </button>
+      </form>
+    </div>
+    }
+  </main>
+  <app-footer></app-footer>
+</div>
