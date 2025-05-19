@@ -1,9 +1,9 @@
 import { Routes } from '@angular/router';
-import { AppComponent } from '../app/app.component';
-import { RegisterComponent } from './pages/register/register.component';
-import { LoginComponent } from './pages/login/login.component';
 import { AccueilComponent } from './pages/accueil/accueil.component';
 import { ListsComponent } from './pages/lists/lists.component';
+import { LoginComponent } from './pages/login/login.component';
+import { MentionsComponent } from './pages/mentions/mentions.component';
+import { RegisterComponent } from './pages/register/register.component';
 import { VitrineComponent } from './pages/vitrine/vitrine.component';
 
 export const routes: Routes = [
@@ -20,5 +20,6 @@ export const routes: Routes = [
   },
   { path: 'vitrine', component: VitrineComponent },
   { path: 'lists', title: 'Page Listes', component: ListsComponent },
-  { path: '**', redirectTo: 'vitrine', pathMatch:"full" },
+  { path: 'mentions', title: 'Page Mentions', component: MentionsComponent },
+  { path: '**', redirectTo: 'vitrine', pathMatch: 'full' },
 ];
