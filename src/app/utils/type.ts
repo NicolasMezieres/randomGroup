@@ -12,3 +12,11 @@ export type studentType = {
   profile: string;
   age: number;
 };
+export type ListProps = {
+  name: string,
+  gender: string,
+  frLevel: number,
+  isDWWM: boolean,
+  techLevel: number,
+  age: number
+}

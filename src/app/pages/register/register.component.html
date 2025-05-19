@@ -1,0 +1,71 @@
+<main class="h-[90vh] flex flex-col w-full justify-center items-center">
+  <h1 class="text-xl">Inscription</h1>
+  <form
+    action="submit"
+    class="h-fit bg-[#EFE9E7] w-[80%] sm:w-[400px] rounded-xl p-8 flex flex-col justify-evenly items-center mt-10 shadow-sm shadow-black border-1 border-slate-200"
+  >
+    <div class="w-full h-fit p-1">
+      <label for="nom" class="underline">Nom :</label>
+      <input
+        [(ngModel)]="newUser.lastName"
+        type="text"
+        name="nom"
+        id="lastName"
+        class="bg-white rounded-md p-2 text-center w-full shadow-sm shadow-black placeholder-gray-300"
+        placeholder="Nom..."
+      />
+      <app-error-msg *ngIf="showError" field="Nom" />
+    </div>
+    <div class="w-full h-fit p-1">
+      <label for="prénom" class="underline">Prénom :</label>
+      <input
+        [(ngModel)]="newUser.firstName"
+        type="text"
+        name="prénom"
+        id="firstName"
+        class="bg-white rounded-md p-2 text-center w-full shadow-sm shadow-black placeholder-gray-300"
+        placeholder="Prénom..."
+      />
+      <app-error-msg *ngIf="showError" field="Prénom" />
+    </div>
+    <div class="w-full h-fit p-1">
+      <label for="email" class="underline">Email :</label>
+      <input
+        [(ngModel)]="newUser.email"
+        type="email"
+        name="email"
+        id="email"
+        class="bg-white rounded-md p-2 text-center w-full shadow-sm shadow-black placeholder-gray-300"
+        placeholder="Email..."
+      />
+      <app-error-msg *ngIf="showError" field="Email" />
+    </div>
+    <div class="w-full h-fit p-1">
+      <label for="mot de passe" class="underline">Mot de passe :</label>
+      <input
+        [(ngModel)]="newUser.password"
+        type="text"
+        name="mot de passe"
+        id="password"
+        class="bg-white rounded-md p-2 text-center w-full shadow-sm shadow-black placeholder-gray-300"
+        placeholder="Mot de passe..."
+      />
+      <app-error-msg *ngIf="showError" field="Mot de passe" />
+    </div>
+    <button
+      type="submit"
+      class="bg-white w-full shadow-sm shadow-black mt-10 rounded-md p-2 sm:hidden"
+      id="submitBtn"
+      (click)="createUser()"
+    >
+      Inscription
+    </button>
+  </form>
+  <button
+    type="submit"
+    class="bg-white w-full sm:w-[300px] shadow-sm shadow-black mt-10 rounded-md p-2 hidden sm:flex items-center justify-center"
+    (click)="createUser()"
+  >
+    Inscription
+  </button>
+</main>
