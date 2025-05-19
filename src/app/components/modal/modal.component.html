@@ -1,0 +1,48 @@
+<form
+  action="submit"
+  class="bg-[#EFE9E7] w-full h-screen gap-8 sm:gap-0 p-10 flex flex-col justify-evenly items-center z-10 rounded-2xl absolute top-0"
+>
+  <div class="w-full sm:w-[300px] h-fit p-1">
+    <label for="nbGroups" class="underline">Nombre de groupe :</label>
+    <input
+      [(ngModel)]="newGroup.nbGroups"
+      type="number"
+      name="nbGroups"
+      id="lastName"
+      class="bg-white rounded-md p-2 text-center w-full shadow-sm shadow-black placeholder-gray-300 mt-2"
+      placeholder="Choisir le nombre..."
+    />
+  </div>
+  <div class="w-full sm:w-[300px] h-fit p-1">
+    <label for="nom" class="underline">Nom du groupe :</label>
+    <input
+      [(ngModel)]="newGroup.name"
+      type="text"
+      name="nom"
+      id="lastName"
+      class="bg-white rounded-md p-2 text-center w-full shadow-sm shadow-black placeholder-gray-300 mt-2"
+      placeholder="Choisir le nombre..."
+    />
+  </div>
+  <div class="w-full h-fit p-1 flex justify-center items-center gap-4">
+    <input
+      [(ngModel)]="newGroup.isDWWM"
+      type="checkbox"
+      name="dwwm"
+      id=""
+      class="accent-black"
+    />
+    <label for="dwwm">Ancien DWWM</label>
+  </div>
+  <div class="w-full h-fit p-1 flex justify-center items-center gap-4">
+    <input  [(ngModel)]="newGroup.age" type="checkbox" name="age" id="" class="accent-black" />
+    <label for="age">Age</label>
+  </div>
+  <div class="w-full h-fit p-1 flex justify-center items-center gap-4">
+    <input  [(ngModel)]="newGroup.skill" type="checkbox" name="tech" id="" class="accent-black" />
+    <label for="tech">Niv Tech</label>
+  </div>
+  <button type="submit" (click)="createGroup()" class="bg-white p-2 rounded-md shadow-xl mt-10 sm:mt-0">
+    Générer les groupes
+  </button>
+</form>

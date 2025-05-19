@@ -1,1 +1,24 @@
+@import url("https://fonts.googleapis.com/css2?family=Agdasima:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Jersey+10&display=swap");
 @import "tailwindcss";
+@theme {
+  --color-grey: #efe9e7;
+  --color-snow: #fff9fb;
+  --color-black: #212121;
+}
+
+body {
+  background-color: #fff9fb;
+}
+
+.Agdasima {
+  font-family: "Agdasima", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.Jersey10 {
+  font-family: "Jersey 10", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+}

@@ -1,0 +1,117 @@
+<div class="flex flex-col min-h-screen">
+  <app-header-connected></app-header-connected>
+  <main class="flex-auto md:flex md:flex-col md:items-center">
+    <h1 class="Jersey10 text-[32px] text-center p-2 m-2">Profil</h1>
+    <form
+      [formGroup]="profileForm"
+      (ngSubmit)="onSubmit()"
+      class="md:w-1/2 p-4 m-5 bg-[#EFE9E7] rounded-[20px] flex flex-col shadow-[0_1px_4px_#21212170]"
+    >
+      <article class="flex flex-col p-3 w-full">
+        <label for="last_name" class="underline">Nom :</label>
+        <input
+          type="text"
+          id="last_name"
+          formControlName="last_name"
+          placeholder="Nom..."
+          class="bg-[#FFF9FB] h-[40px] placeholder:text-gray-500 placeholder:opacity-50 placeholder:italic rounded-[5px] text-center shadow-[0_2px_2px_rgba(33,33,33,0.50)]"
+        />
+        @if (profileForm.controls['last_name'].errors?.['required'] &&
+        profileForm.controls['last_name'].touched ) {
+        <span class="text-red-500">This is required</span>
+        } @if (profileForm.controls['last_name'].errors?.['minlength'] &&
+        profileForm.controls['last_name'].touched ) {
+        <span class="text-red-500">Need 3 length</span>
+        }
+      </article>
+      <article class="flex flex-col p-3 w-full">
+        <label for="first_name" class="underline"> Prénom :</label>
+        <input
+          type="text"
+          id="first_name"
+          formControlName="first_name"
+          placeholder="Prénom..."
+          class="bg-[#FFF9FB] h-[40px] placeholder:text-gray-500 placeholder:opacity-50 placeholder:italic rounded-[5px] text-center shadow-[0_2px_2px_rgba(33,33,33,0.50)]"
+        />
+        @if (profileForm.controls['first_name'].errors?.['required'] &&
+        profileForm.controls['first_name'].touched ) {
+        <span class="text-red-500">This is required</span>
+        } @if (profileForm.controls['first_name'].errors?.['maxlength'] &&
+        profileForm.controls['first_name'].touched ) {
+        <span class="text-red-500">Max length 20</span>
+        } @if (firstNameField?.dirty) { @if
+        (firstNameField?.value?.match('^(?=.*[A-Z])')) {
+        <span class="text-green-500">✅ One uppercase</span>
+        }@else {
+        <span class="text-red-500">❌ One uppercase</span>
+        } @if (firstNameField?.value?.match('^(?=.*[a-z])')) {
+        <span class="text-green-500">✅ One lowwercase</span>
+        }@else {
+        <span class="text-red-500">❌ One lowercase</span>
+        } @if (firstNameField?.value?.match('.{3,}')) {
+        <span class="text-green-500">✅ 3 characters</span>
+        } @else {
+        <span class="text-red-500">❌ 3 characters</span>
+        }}
+      </article>
+      <article class="flex flex-col p-3 w-full">
+        <label for="email" class="underline"> Email :</label>
+        <input
+          type="email"
+          id="email"
+          formControlName="email"
+          placeholder="Email..."
+          class="bg-[#FFF9FB] h-[40px] placeholder:text-gray-500 placeholder:opacity-50 placeholder:italic rounded-[5px] text-center shadow-[0_2px_2px_rgba(33,33,33,0.50)]"
+        />
+        @if (profileForm.controls['email'].errors?.['required'] &&
+        profileForm.controls['email'].touched ) {
+        <span class="text-red-500">This is required</span>
+        } @if (profileForm.controls['email'].errors?.['email'] &&
+        profileForm.controls['email'].touched ) {
+        <span class="text-red-500">This is not a email</span>
+        }
+      </article>
+      <article class="flex flex-col p-3 w-full">
+        <label for="password" class="underline">Mot de passe :</label>
+        <input
+          type="password"
+          id="password"
+          formControlName="password"
+          placeholder="Mot de passe..."
+          class="bg-[#FFF9FB] h-[40px] placeholder:text-gray-500 placeholder:opacity-50 placeholder:italic rounded-[5px] text-center shadow-[0_2px_2px_rgba(33,33,33,0.50)]"
+        />
+        @if (profileForm.controls['password'].errors?.['required'] &&
+        profileForm.controls['password'].touched ) {
+        <span class="text-red-500">This is required</span>
+        } @if (passwordFormField?.dirty) { @if
+        (passwordFormField?.value?.match('^(?=.*[A-Z])')) {
+        <span class="text-green-500">✅ One uppercase</span>
+        }@else {
+        <span class="text-red-500">❌ One uppercase</span>
+        } @if (passwordFormField?.value?.match('^(?=.*[a-z])')) {
+        <span class="text-green-500">✅ One lowercase</span>
+        } @else {
+        <span class="text-red-500">❌ One lowercase</span>
+        } @if (passwordFormField?.value?.match('(.*[0-9].*)')) {
+        <span class="text-green-500">✅ One number</span>
+        } @else {
+        <span class="text-red-500">❌ One number</span>
+        } @if (passwordFormField?.value?.match('(?=.*[!@#$%^&*])')) {
+        <span class="text-green-500">✅ One special</span>
+        } @else { <span class="text-red-500">❌ One special</span>
+        } @if (passwordFormField?.value?.match('.{16,}')) {
+        <span class="text-green-500">✅ 16 characters</span>
+        } @else {
+        <span class="text-red-500">❌ 16 characters</span>
+        } }
+      </article>
+      <button
+        type="submit"
+        class="bg-[#FFF9FB] m-4 h-[40px] rounded-[5px] shadow-[inset_0_2px_2px_rgba(33,33,33,0.5)]"
+      >
+        Modifier
+      </button>
+    </form>
+  </main>
+  <app-footer></app-footer>
+</div>
