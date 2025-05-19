@@ -16,13 +16,13 @@
           placeholder="Nom..."
           class="bg-[#FFF9FB] h-[40px] placeholder:text-gray-500 placeholder:opacity-50 placeholder:italic rounded-[5px] text-center shadow-[0_2px_2px_rgba(33,33,33,0.50)]"
         />
-        <!-- @if (profileForm.controls['last_name'].errors?.['required'] &&
+        @if (profileForm.controls['last_name'].errors?.['required'] &&
         profileForm.controls['last_name'].touched ) {
         <span class="text-red-500">This is required</span>
         } @if (profileForm.controls['last_name'].errors?.['minlength'] &&
         profileForm.controls['last_name'].touched ) {
         <span class="text-red-500">Need 3 length</span>
-        } -->
+        }
       </article>
       <article class="flex flex-col p-3 w-full">
         <label for="first_name" class="underline"> Prénom :</label>
@@ -107,7 +107,6 @@
       </article>
       <button
         type="submit"
-        [disabled]="!profileForm.valid"
         class="bg-[#FFF9FB] m-4 h-[40px] rounded-[5px] shadow-[inset_0_2px_2px_rgba(33,33,33,0.5)]"
       >
         Modifier
