@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { LoginProps } from '../../utils/types';
+import { LoginProps } from '../../utils/type';
 import { Router } from '@angular/router';
 
 @Component({

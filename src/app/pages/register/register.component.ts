@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { RegisterProps } from '../../utils/types';
+import { RegisterProps } from '../../utils/type';
 import { ErrorMsgComponent } from '../../components/error-msg/error-msg.component';
 import { NgIf } from '@angular/common';
 
