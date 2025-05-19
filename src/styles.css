@@ -3,6 +3,8 @@
 @import "tailwindcss";
 @theme {
   --color-grey: #efe9e7;
+  --color-snow: #fff9fb;
+  --color-black: #212121;
 }
 
 body {

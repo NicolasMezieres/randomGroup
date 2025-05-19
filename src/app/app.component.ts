@@ -7,6 +7,7 @@ import { ProfilsComponent } from "./pages/profils/profils.component";
   imports: [RouterOutlet, ProfilsComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
+
 })
 export class AppComponent {
   title = 'randomGroup';
