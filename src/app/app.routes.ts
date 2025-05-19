@@ -5,6 +5,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { MentionsComponent } from './pages/mentions/mentions.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { VitrineComponent } from './pages/vitrine/vitrine.component';
+import { ProfilsComponent } from './pages/profils/profils.component';
 
 export const routes: Routes = [
   { path: 'accueil', component: AccueilComponent },
@@ -18,6 +19,7 @@ export const routes: Routes = [
     title: 'Page Connexion',
     component: LoginComponent,
   },
+  { path: 'profile', component: ProfilsComponent },
   { path: 'vitrine', component: VitrineComponent },
   { path: 'lists', title: 'Page Listes', component: ListsComponent },
   { path: 'mentions', title: 'Page Mentions', component: MentionsComponent },

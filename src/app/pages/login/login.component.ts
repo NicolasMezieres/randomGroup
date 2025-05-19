@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { LoginProps } from '../../utils/types';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,7 @@ export class LoginComponent {
     email: '',
     password: '',
   };
-
+  constructor(private router: Router) {}
   users = JSON.parse(localStorage.getItem('users') || '');
 
   loginUser(): void {
@@ -22,8 +23,7 @@ export class LoginComponent {
         this.user.email === this.users.email &&
         this.user.password === this.users.password
       ) {
-        alert('Connecté !');
-        console.log(this.user);
+        this.router.navigate(['accueil']);
       } else {
         alert('Identifiants invalides');
       }
