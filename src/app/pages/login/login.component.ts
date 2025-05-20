@@ -2,10 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { LoginProps } from '../../utils/type';
 import { Router } from '@angular/router';
+import { FooterComponent } from '../../components/footer/footer.component';
+import { HeaderDCComponent } from '../../components/header-dc/header-dc.component';
 
 @Component({
   selector: 'app-login',
-  imports: [FormsModule],
+  imports: [FormsModule, FooterComponent, HeaderDCComponent],
   styleUrl: './login.component.css',
   templateUrl: './login.component.html',
 })

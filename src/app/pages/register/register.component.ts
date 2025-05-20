@@ -3,10 +3,12 @@ import { FormsModule } from '@angular/forms';
 import { RegisterProps } from '../../utils/type';
 import { ErrorMsgComponent } from '../../components/error-msg/error-msg.component';
 import { NgIf } from '@angular/common';
+import { HeaderDCComponent } from '../../components/header-dc/header-dc.component';
+import { FooterComponent } from '../../components/footer/footer.component';
 
 @Component({
   selector: 'app-register',
-  imports: [FormsModule, ErrorMsgComponent, NgIf],
+  imports: [FormsModule, ErrorMsgComponent, NgIf, HeaderDCComponent, FooterComponent],
   styleUrl: './register.component.css',
   templateUrl: './register.component.html',
 })

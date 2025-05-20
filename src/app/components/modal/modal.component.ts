@@ -9,20 +9,31 @@ import { ModalProps } from '../../utils/type';
   styleUrl: './modal.component.css',
 })
 export class ModalComponent {
+  groups: ModalProps[] = [];
+  listStudent = JSON.parse(localStorage.getItem('listStudent') || '');
+  ngOnInit() {
+    console.log(this.listStudent);
+  }
   newGroup: ModalProps = {
     nbGroups: 0,
     name: '',
     isDWWM: false,
     age: false,
     skill: false,
+    students: ([] = this.listStudent),
   };
+
   createGroup(): void {
     if (
       this.newGroup.nbGroups !== null &&
       this.newGroup.nbGroups !== undefined &&
+      this.newGroup.nbGroups !== 0 &&
       this.newGroup.name.trim()
     ) {
-      console.log(this.newGroup);
+      this.groups.push(this.newGroup);
+
+      localStorage.setItem('groups', JSON.stringify(this.groups));
+      console.log('group added to local storage');
     } else {
       return alert('Veuillez remplir les 2 premiers champs');
     }
