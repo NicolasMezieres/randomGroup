@@ -4,10 +4,6 @@ export type listType = {
   tryNbr: number;
 };
 
-export type listProps = {
-  listItems: listType[]
-}
-
 export type studentType = {
   name: string;
   gender: string;

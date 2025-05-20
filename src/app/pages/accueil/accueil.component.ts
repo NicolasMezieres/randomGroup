@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ConnectedComponent } from '../../components/header/connected/connected.component';
 import { MatButtonModule } from '@angular/material/button';
-import { listProps, listType, studentType } from '../../utils/type';
+import { listType, studentType } from '../../utils/type';
 import { FooterComponent } from '../../components/footer/footer.component';
 import { MatIconModule } from '@angular/material/icon';
 import {
@@ -28,12 +28,11 @@ export class AccueilComponent {
   isCreateList: boolean = false;
   isShowLists: boolean = true;
   choiceStudent: String = '';
+  listStudent: studentType[] = [];
   lists: listType[] = [
     { name: 'test', personNbr: 2, tryNbr: 2 },
     { name: 'briefRandom', personNbr: 30, tryNbr: 0 },
   ];
-  listStudent: studentType[] = [];
-
   studentForm = new FormGroup({
     name: new FormControl('', [
       Validators.required,
@@ -109,13 +108,15 @@ export class AccueilComponent {
     e.preventDefault();
     this.isSubmit = true;
     if (!this.studentForm.invalid) {
-      const listStudent = window.localStorage.getItem('listStudent');
+      const listStudent = localStorage.getItem('listStudent');
+
       const arrayStudent: studentType[] = listStudent
         ? JSON.parse(listStudent)
         : [];
 
       const newStudent = this.studentForm.value as studentType;
       arrayStudent.push(newStudent);
+      console.log(arrayStudent);
 
       // const data = JSON.stringify(this.studentForm.value);
       // if (dataStudent) {
@@ -123,6 +124,7 @@ export class AccueilComponent {
       // }
       // this.listStudent.push(this.studentForm.value as studentType);
       // arrayStudent.push(data);
+
       window.localStorage.setItem('listStudent', JSON.stringify(arrayStudent));
       this.studentForm.reset();
       this.isSubmit = false;
