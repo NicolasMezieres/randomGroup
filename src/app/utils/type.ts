@@ -3,6 +3,11 @@ export type listType = {
   personNbr: number;
   tryNbr: number;
 };
+
+export type listProps = {
+  listItems: listType[]
+}
+
 export type studentType = {
   name: string;
   gender: string;
@@ -13,13 +18,13 @@ export type studentType = {
   age: number;
 };
 export type ListProps = {
-  name: string,
-  gender: string,
-  frLevel: number,
-  isDWWM: boolean,
-  techLevel: number,
-  age: number
-}
+  name: string;
+  gender: string;
+  frLevel: number;
+  isDWWM: boolean;
+  techLevel: number;
+  age: number;
+};
 
 export type RegisterProps = {
   firstName: string;
@@ -39,4 +44,5 @@ export type ModalProps = {
   isDWWM: boolean;
   age: boolean;
   skill: boolean;
+  students: studentType[];
 };

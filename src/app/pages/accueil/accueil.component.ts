@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ConnectedComponent } from '../../components/header/connected/connected.component';
 import { MatButtonModule } from '@angular/material/button';
-import { listType, studentType } from '../../utils/type';
+import { listProps, listType, studentType } from '../../utils/type';
 import { FooterComponent } from '../../components/footer/footer.component';
 import { MatIconModule } from '@angular/material/icon';
 import {
@@ -24,8 +24,8 @@ import {
 })
 export class AccueilComponent {
   listStudentProposition: string[] = [];
-  isSubmit = false;
-  isCreateList = false;
+  isSubmit: boolean = false;
+  isCreateList: boolean = false;
   isShowLists: boolean = true;
   choiceStudent: String = '';
   lists: listType[] = [
@@ -33,6 +33,7 @@ export class AccueilComponent {
     { name: 'briefRandom', personNbr: 30, tryNbr: 0 },
   ];
   listStudent: studentType[] = [];
+
   studentForm = new FormGroup({
     name: new FormControl('', [
       Validators.required,
@@ -108,18 +109,27 @@ export class AccueilComponent {
     e.preventDefault();
     this.isSubmit = true;
     if (!this.studentForm.invalid) {
-      const dataStudent = window.localStorage.getItem('listStudent');
-      const arrayStudent = [];
-      const data = JSON.stringify(this.studentForm.value);
-      if (dataStudent) {
-        arrayStudent.push([dataStudent]);
-      }
-      this.listStudent.push(this.studentForm.value as studentType);
-      arrayStudent.push(data);
-      window.localStorage.setItem('listStudent', '' + [arrayStudent]);
+      const listStudent = window.localStorage.getItem('listStudent');
+      const arrayStudent: studentType[] = listStudent
+        ? JSON.parse(listStudent)
+        : [];
+
+      const newStudent = this.studentForm.value as studentType;
+      arrayStudent.push(newStudent);
+
+      // const data = JSON.stringify(this.studentForm.value);
+      // if (dataStudent) {
+      //   arrayStudent.push(data);
+      // }
+      // this.listStudent.push(this.studentForm.value as studentType);
+      // arrayStudent.push(data);
+      window.localStorage.setItem('listStudent', JSON.stringify(arrayStudent));
       this.studentForm.reset();
       this.isSubmit = false;
     }
+  }
+  goToLists(): void {
+    location.href = '/lists';
   }
 }
 //todo reste plus qu'à faire la recherche par étudiant ainsi que l'affichage des étudiants dans la liste et puis validé la liste
