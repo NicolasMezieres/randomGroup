@@ -1,5 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { Component } from '@angular/core';
+import {
+  FormControl,
+  FormGroup,
+  FormsModule,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { LoginProps } from '../../utils/type';
 import { Router } from '@angular/router';
 import { FooterComponent } from '../../components/footer/footer.component';
@@ -7,24 +13,40 @@ import { HeaderDCComponent } from '../../components/header-dc/header-dc.componen
 
 @Component({
   selector: 'app-login',
-  imports: [FormsModule, FooterComponent, HeaderDCComponent],
+  imports: [
+    FormsModule,
+    FooterComponent,
+    HeaderDCComponent,
+    ReactiveFormsModule,
+  ],
   styleUrl: './login.component.css',
   templateUrl: './login.component.html',
 })
 export class LoginComponent {
-  user: LoginProps = {
+  loginForm: FormGroup;
+  constructor(private router: Router) {
+    this.loginForm = new FormGroup({
+      email: new FormControl('', [Validators.required, Validators.email]),
+      password: new FormControl('', [
+        Validators.required,
+        Validators.minLength(12),
+      ]),
+    });
+  }
+  activateUser: LoginProps = {
     email: '',
     password: '',
   };
-  constructor(private router: Router) {}
   users = JSON.parse(localStorage.getItem('users') || '');
 
-  loginUser(): void {
-    if (this.user.email.trim() && this.user.password.trim()) {
+  onSubmit(): void {
+    if (this.loginForm.valid) {
+      this.activateUser = this.loginForm.value;
       if (
-        this.user.email === this.users.email &&
-        this.user.password === this.users.password
+        this.activateUser.email === this.users.email &&
+        this.activateUser.password === this.users.password
       ) {
+        alert("Connecté ! Redirection vers l'accueil...");
         this.router.navigate(['accueil']);
       } else {
         alert('Identifiants invalides');

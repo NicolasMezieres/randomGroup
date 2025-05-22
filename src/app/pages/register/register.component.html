@@ -5,72 +5,82 @@
   </h2>
   <h1 class="text-xl Agdasima">Inscription</h1>
   <form
-    action="submit"
+    [formGroup]="registerForm"
+    (ngSubmit)="onSubmit()"
     class="h-fit bg-[#EFE9E7] w-[80%] sm:w-[400px] rounded-xl p-8 flex flex-col justify-evenly items-center mt-10 shadow-sm shadow-black border-1 border-slate-200"
   >
-    <div class="w-full h-fit p-1">
+    <div class="w-full h-fit p-1 flex flex-col">
       <label for="nom" class="underline">Nom :</label>
       <input
-        [(ngModel)]="newUser.lastName"
+        formControlName="lastName"
         type="text"
         name="nom"
-        id="lastName"
         class="bg-white rounded-md p-2 text-center w-full shadow-sm shadow-black placeholder-gray-300"
         placeholder="Nom..."
       />
-      <app-error-msg *ngIf="showError" field="Nom" />
+      @if (registerForm.get("lastName")?.touched && registerForm.get("lastName")?.invalid){
+        @if (registerForm.get("lastName")?.errors?.['required']){
+          <small class="text-red-600 font-bold">Le champ nom est requis</small>
+        }
+        <small class="text-red-600 font-bold">Minimum 3 charactères</small>
+      }
     </div>
-    <div class="w-full h-fit p-1">
+    <div class="w-full h-fit p-1 flex flex-col">
       <label for="prénom" class="underline">Prénom :</label>
       <input
-        [(ngModel)]="newUser.firstName"
+        formControlName="firstName"
         type="text"
         name="prénom"
-        id="firstName"
         class="bg-white rounded-md p-2 text-center w-full shadow-sm shadow-black placeholder-gray-300"
         placeholder="Prénom..."
       />
-      <app-error-msg *ngIf="showError" field="Prénom" />
+      @if (registerForm.get("firstName")?.touched && registerForm.get("firstName")?.invalid){
+        @if (registerForm.get("firstName")?.errors?.['required']){
+          <small class="text-red-600 font-bold">Le champ prénom est requis</small>
+        }
+        <small class="text-red-600 font-bold">Minimum 3 charactères</small>
+      }
     </div>
-    <div class="w-full h-fit p-1">
+    <div class="w-full h-fit p-1 flex flex-col">
       <label for="email" class="underline">Email :</label>
       <input
-        [(ngModel)]="newUser.email"
+        formControlName="email"
         type="email"
         name="email"
-        id="email"
         class="bg-white rounded-md p-2 text-center w-full shadow-sm shadow-black placeholder-gray-300"
         placeholder="Email..."
       />
-      <app-error-msg *ngIf="showError" field="Email" />
+      @if (registerForm.get("email")?.touched && registerForm.get("email")?.invalid){
+        @if (registerForm.get("email")?.errors?.['required']){
+          <small class="text-red-600 font-bold">Le champ email est requis</small>
+        }
+        <small class="text-red-600 font-bold">Format invalide</small>
+      }
     </div>
-    <div class="w-full h-fit p-1">
+    <div class="w-full h-fit p-1 flex flex-col">
       <label for="mot de passe" class="underline">Mot de passe :</label>
       <input
-        [(ngModel)]="newUser.password"
-        type="text"
+        formControlName="password"
+        type="password"
         name="mot de passe"
-        id="password"
         class="bg-white rounded-md p-2 text-center w-full shadow-sm shadow-black placeholder-gray-300"
         placeholder="Mot de passe..."
       />
-      <app-error-msg *ngIf="showError" field="Mot de passe" />
+      @if (registerForm.get("password")?.touched && registerForm.get("password")?.invalid){
+        @if (registerForm.get("password")?.errors?.['required']){
+          <small class="text-red-600 font-bold">Le champ mot de passe est requis</small>
+        }
+        <small class="text-red-600 font-bold">Minimum 12 charactères</small>
+      }
     </div>
     <button
       type="submit"
-      class="bg-white w-full shadow-sm shadow-black mt-10 rounded-md p-2 sm:hidden"
+      class="bg-white w-full shadow-sm shadow-black mt-10 rounded-md p-2"
       id="submitBtn"
-      (click)="createUser()"
     >
       Inscription
     </button>
   </form>
-  <button
-    type="submit"
-    class="bg-white w-full sm:w-[300px] shadow-sm shadow-black mt-10 rounded-md p-2 hidden sm:flex items-center justify-center"
-    (click)="createUser()"
-  >
-    Inscription
-  </button>
+ 
 </main>
 <app-footer></app-footer>

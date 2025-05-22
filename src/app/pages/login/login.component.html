@@ -6,47 +6,52 @@
   </h2>
   <h1 class="text-xl Agdasima">Connexion</h1>
   <form
-    action="submit"
+    [formGroup]="loginForm"
+    (ngSubmit)="onSubmit()"
     class="h-fit gap-8 bg-[#EFE9E7] w-[80%] sm:w-[400px] rounded-xl p-8 flex flex-col justify-evenly items-center mt-10 shadow-sm shadow-black border-1 border-slate-200"
   >
-    <div class="w-full h-fit p-1">
+    <div class="w-full h-fit p-1 flex flex-col">
       <label for="email" class="underline">Email :</label>
       <input
-        required
-        [(ngModel)]="user.email"
+        formControlName="email"
         type="email"
         name="email"
-        id="email"
         class="bg-white rounded-md p-2 text-center w-full shadow-sm shadow-black placeholder-gray-300"
         placeholder="Email..."
       />
+      @if (loginForm.get("email")?.touched &&
+      loginForm.get("email")?.invalid){ @if
+      (loginForm.get("email")?.errors?.['required']){
+      <small class="text-red-600 font-bold">Le champ email est requis</small>
+      }
+      <small class="text-red-600 font-bold">Format invalide</small>
+      }
     </div>
-    <div class="w-full h-fit p-1">
+    <div class="w-full h-fit p-1 flex flex-col">
       <label for="mot de passe" class="underline">Mot de passe :</label>
       <input
-        required
-        [(ngModel)]="user.password"
-        type="text"
+        formControlName="password"
+        type="password"
         name="mot de passe"
-        id="password"
         class="bg-white rounded-md p-2 text-center w-full shadow-sm shadow-black placeholder-gray-300"
         placeholder="Mot de passe..."
       />
+      @if (loginForm.get("password")?.touched &&
+      loginForm.get("password")?.invalid){ @if
+      (loginForm.get("password")?.errors?.['required']){
+      <small class="text-red-600 font-bold"
+        >Le champ mot de passe est requis</small
+      >
+      }
+      <small class="text-red-600 font-bold">Minimum 12 charactères</small>
+      }
     </div>
     <button
       type="submit"
-      class="bg-white w-full shadow-sm shadow-black mt-10 rounded-md p-2 sm:hidden"
-      (click)="loginUser()"
+      class="bg-white w-full shadow-sm shadow-black mt-10 rounded-md p-2"
     >
       Connexion
     </button>
   </form>
-  <button
-    type="submit"
-    class="bg-white w-full sm:w-[300px] shadow-sm shadow-black mt-10 rounded-md p-2 hidden sm:flex items-center justify-center"
-    (click)="loginUser()"
-  >
-    > Connexion
-  </button>
 </main>
 <app-footer></app-footer>
