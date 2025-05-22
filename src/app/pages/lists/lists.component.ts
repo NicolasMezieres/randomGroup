@@ -2,13 +2,19 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { ConnectedComponent } from '../../components/header/connected/connected.component';
 import { FooterComponent } from '../../components/footer/footer.component';
-import { ListProps } from '../../utils/type';
+import { ListProps, studentType } from '../../utils/type';
 import { MatIconModule } from '@angular/material/icon';
-
+import { ModalComponent } from '../../components/modal/modal.component';
 
 @Component({
   selector: 'app-lists',
-  imports: [RouterOutlet, ConnectedComponent, FooterComponent, MatIconModule],
+  imports: [
+    RouterOutlet,
+    ConnectedComponent,
+    FooterComponent,
+    MatIconModule,
+    ModalComponent,
+  ],
   templateUrl: './lists.component.html',
   styleUrl: './lists.component.css',
 })
@@ -21,34 +27,17 @@ export class ListsComponent {
     techLevel: 0,
     age: 0,
   };
-  students: ListProps[] = [
-    {
-      name: 'Joe',
-      gender: 'H',
-      frLevel: 1,
-      isDWWM: true,
-      techLevel: 2,
-      age: 20,
-    },
-    {
-      name: 'Momo',
-      gender: 'H',
-      frLevel: 1,
-      isDWWM: true,
-      techLevel: 2,
-      age: 20,
-    },
-    {
-      name: 'Toto',
-      gender: 'H',
-      frLevel: 1,
-      isDWWM: true,
-      techLevel: 2,
-      age: 20,
-    },
-  ];
+
+  listStudent: studentType[] = JSON.parse(
+    localStorage.getItem('listStudent') || ''
+  );
 
   deleteStudent(index: number): void {
-    this.students.splice(index, 1);
+    this.listStudent.splice(index, 1);
+  }
+
+  isShowModal = false;
+  showModal() {
+    this.isShowModal = true;
   }
 }

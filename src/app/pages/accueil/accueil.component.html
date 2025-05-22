@@ -18,7 +18,10 @@
     @if(isShowLists){
     <article class="bg-grey w-full p-5">
       @for (list of lists; track $index) {
-      <ul>
+      <ul
+        class="hover:cursor-pointer hover:bg-gray-300"
+        (click)="goToLists()"
+      >
         <li>Nom : {{ list.name }}</li>
         <li>Nbr de personne : {{ list.personNbr }}</li>
         <li>Nbr de tirage : {{ list.tryNbr }}</li>

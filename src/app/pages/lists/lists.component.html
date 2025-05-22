@@ -1,4 +1,7 @@
 <app-header-connected></app-header-connected>
+@if(isShowModal){
+  <app-modal></app-modal>
+}
 <main class="w-full h-[85vh] sm:h-[90vh] flex flex-col justify-center items-center gap-4">
   <h1 class="Agdasima text-2xl">Liste</h1>
   <section
@@ -13,14 +16,14 @@
       <li class="col-span-1">Age:</li>
 
     </ul>
-    @for (student of students; track $index){
+    @for (student of listStudent; track $index){
     <div class="overflow-y-auto flex-1 my-4">
       <ul class="grid grid-cols-7 w-full text-center text-xs">
         <li class="col-span-1">{{ student.name }}</li>
         <li class="col-span-1">{{ student.gender }}</li>
-        <li class="col-span-1">{{ student.frLevel }}</li>
-        <li class="col-span-1">{{ student.isDWWM ? "Oui" : "Non" }}</li>
-        <li class="col-span-1">{{ student.techLevel }}</li>
+        <li class="col-span-1">{{ student.levelFrench }}</li>
+        <li class="col-span-1">{{ student.hasDWWM ? "Oui" : "Non" }}</li>
+        <li class="col-span-1">{{ student.levelTech }}</li>
         <li class="col-span-1">{{ student.age }}</li>
         <div>
           <mat-icon aria-label="edit icon" fontIcon="edit"></mat-icon>
@@ -30,7 +33,7 @@
     </div>
     }
   </section>
-  <button class="bg-[#efe9e7] rounded-xl shadow-black shadow-md p-3 w-[200px]">
+  <button class="bg-[#efe9e7] rounded-xl shadow-black shadow-md p-3 w-[200px]" (click)="showModal()">
     Créer un groupe
   </button>
 </main>
