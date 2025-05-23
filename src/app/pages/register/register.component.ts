@@ -9,6 +9,7 @@ import {
 import { RegisterProps } from '../../utils/type';
 import { HeaderDCComponent } from '../../components/header-dc/header-dc.component';
 import { FooterComponent } from '../../components/footer/footer.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -23,7 +24,7 @@ import { FooterComponent } from '../../components/footer/footer.component';
 })
 export class RegisterComponent {
   registerForm: FormGroup;
-  constructor() {
+  constructor(private router: Router) {
     this.registerForm = new FormGroup({
       firstName: new FormControl('', [
         Validators.required,
@@ -47,15 +48,26 @@ export class RegisterComponent {
     email: '',
     password: '',
   };
+
   users: RegisterProps[] = [];
+
+  existingUsers: RegisterProps[] = JSON.parse(
+    localStorage.getItem('users') || 'null'
+  );
 
   onSubmit(): void {
     if (this.registerForm.valid) {
-      this.newUser = this.registerForm.value
-      this.users.push(this.newUser);
-      localStorage.setItem('users', JSON.stringify(this.newUser));
+      this.newUser = this.registerForm.value;
+
+      if (!this.existingUsers) {
+        this.users.push(this.newUser);
+        localStorage.setItem('users', JSON.stringify(this.users));
+      } else {
+        this.existingUsers.push(this.newUser);
+        localStorage.setItem('users', JSON.stringify(this.existingUsers));
+      }
       alert('Formulaire validé ! Redirection vers connexion...');
-      location.href = '../login';
+      this.router.navigate(['login']);
     } else {
       return alert('Inscription invalide !');
     }

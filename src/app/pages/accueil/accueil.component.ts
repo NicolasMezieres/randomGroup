@@ -10,6 +10,7 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-accueil',
   imports: [
@@ -23,6 +24,7 @@ import {
   styleUrl: './accueil.component.css',
 })
 export class AccueilComponent {
+  constructor(private router: Router){}
   listStudentProposition: string[] = [];
   isSubmit: boolean = false;
   isCreateList: boolean = false;
@@ -116,7 +118,6 @@ export class AccueilComponent {
 
       const newStudent = this.studentForm.value as studentType;
       arrayStudent.push(newStudent);
-      console.log(arrayStudent);
 
       // const data = JSON.stringify(this.studentForm.value);
       // if (dataStudent) {
@@ -131,7 +132,7 @@ export class AccueilComponent {
     }
   }
   goToLists(): void {
-    location.href = '/lists';
+    this.router.navigate(['lists']);
   }
 }
 //todo reste plus qu'à faire la recherche par étudiant ainsi que l'affichage des étudiants dans la liste et puis validé la liste
