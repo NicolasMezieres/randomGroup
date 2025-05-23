@@ -59,11 +59,12 @@ export class RegisterComponent {
     if (this.registerForm.valid) {
       this.newUser = this.registerForm.value;
 
-      if (this.existingUsers === null) {
+      if (!this.existingUsers) {
         this.users.push(this.newUser);
-        localStorage.setItem('users', JSON.stringify(this.newUser));
+        localStorage.setItem('users', JSON.stringify(this.users));
       } else {
         this.existingUsers.push(this.newUser);
+        localStorage.setItem('users', JSON.stringify(this.existingUsers));
       }
       alert('Formulaire validé ! Redirection vers connexion...');
       this.router.navigate(['login']);
