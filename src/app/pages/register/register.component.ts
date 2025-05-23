@@ -58,7 +58,14 @@ export class RegisterComponent {
   onSubmit(): void {
     if (this.registerForm.valid) {
       this.newUser = this.registerForm.value;
-
+      const matchedUser = this.existingUsers?.find(
+        (user: RegisterProps) =>
+          user.email === this.newUser.email ||
+          user.password === this.newUser.password
+      );
+      if (matchedUser) {
+        return alert('Email ou mot de passe déjà pris');
+      }
       if (!this.existingUsers) {
         this.users.push(this.newUser);
         localStorage.setItem('users', JSON.stringify(this.users));

@@ -55,7 +55,7 @@ export class LoginComponent {
         alert('Identifiants invalides');
       }
     } else {
-      alert('Veuillez remplir tous les champs');
+      alert("Formulaire invalide !")
     }
   }
 }
