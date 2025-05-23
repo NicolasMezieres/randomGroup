@@ -6,7 +6,7 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { LoginProps } from '../../utils/type';
+import { LoginProps, RegisterProps } from '../../utils/type';
 import { Router } from '@angular/router';
 import { FooterComponent } from '../../components/footer/footer.component';
 import { HeaderDCComponent } from '../../components/header-dc/header-dc.component';
@@ -37,7 +37,8 @@ export class LoginComponent {
     email: '',
     password: '',
   };
-  users = JSON.parse(localStorage.getItem('users') || '');
+
+  users = JSON.parse(localStorage.getItem('users') || 'null');
 
   onSubmit(): void {
     if (this.loginForm.valid) {
