@@ -29,7 +29,7 @@ export class ListsComponent {
   };
 
   listStudent: studentType[] = JSON.parse(
-    localStorage.getItem('listStudent') || ''
+    localStorage.getItem('listStudent') || 'null'
   );
 
   deleteStudent(index: number): void {

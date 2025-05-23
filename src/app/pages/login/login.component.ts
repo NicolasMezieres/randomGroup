@@ -6,7 +6,7 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { LoginProps } from '../../utils/type';
+import { LoginProps, RegisterProps } from '../../utils/type';
 import { Router } from '@angular/router';
 import { FooterComponent } from '../../components/footer/footer.component';
 import { HeaderDCComponent } from '../../components/header-dc/header-dc.component';
@@ -37,15 +37,18 @@ export class LoginComponent {
     email: '',
     password: '',
   };
-  users = JSON.parse(localStorage.getItem('users') || '');
+
+  users: RegisterProps[] = JSON.parse(localStorage.getItem('users') || 'null');
 
   onSubmit(): void {
     if (this.loginForm.valid) {
       this.activateUser = this.loginForm.value;
-      if (
-        this.activateUser.email === this.users.email &&
-        this.activateUser.password === this.users.password
-      ) {
+      const matchedUser = this.users?.find(
+        (user: RegisterProps) =>
+          user.email === this.activateUser.email &&
+          user.password === this.activateUser.password
+      );
+      if (matchedUser) {
         alert("Connecté ! Redirection vers l'accueil...");
         this.router.navigate(['accueil']);
       } else {
